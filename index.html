@@ -63,7 +63,16 @@
         font-size: 24px;
       }
 
-    
+      .formContainer {
+          width: 50%;
+          margin: auto;
+      }
+      
+      #submit-Train {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 24px;
+      }
+  
       
 
   </style>
@@ -91,27 +100,34 @@
             <tbody>
             </tbody>
           </table>
-          <h2 class = "text-center mt-5">New train submissions:</h2>
-          <form class = "mt-1 bg-dark text-white formText">
-                <div class="form-group">
+          <h2 class = "text-center mt-5 tableHeader">New train submissions:</h2>
+          <form class = "mt-1 bg-danger text-white formText formContainer">
+                <div class="form-group p-3 row">
                     <label for="trainNameInput">Train Name</label>
-                    <input type="text" class="form-control border border-danger" id="trainNameInput">
+                    <input type="text" class="form-control border border-danger" id="trainNameInput" placeholder="Enter Train Name">
                 </div>
-                <div class="form-group">
+                <div class = "p-2 bg-white" row></div>
+                <div class="form-group p-3 row">
                         <label for="destinationInput">Destination</label>
-                        <input type="text" class="form-control border border-danger" id="destinationInput">
+                        <input type="text" class="form-control border border-danger" id="destinationInput" placeholder="Enter Destination">
                 </div>
-                <div class="form-group">
+                <div class = "p-2 bg-white row"></div>
+                <div class="form-group p-3 row">
                         <label for="trainTimeInput">First Train Time (HH:mm)</label>
-                        <input type="time" class="form-control border border-danger" id="trainTimeInput">
+                        <input type="time" class="form-control border border-danger" id="trainTimeInput" value="12:30pm" required>
+                        <span class="validity"></span>
                 </div>
-                <div class="form-group">
+                <div class = "p-2 bg-white row"></div>
+                <div class="form-group p-3 row">
                         <label for="frequencyInput">Frequency (min)</label>
-                        <input type="number" class="form-control border border-danger" id="frequencyInput">
+                        <input type="number" class="form-control border border-danger" id="frequencyInput" placeholder="40">
                 </div>
-
-                <button type="submit" class="btn btn-danger btn-block" id="submit-train">Submit</button>
+                <div class = "p-2 bg-white row"></div>
+                <button type="submit" class="btn btn-dark btn-block p-2" id="submit-train">Submit</button>
               </form>
+              
+              
+              
             </div>
     <script>
         // display ID's: 
