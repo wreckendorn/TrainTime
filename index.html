@@ -24,58 +24,10 @@
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
 
-  <style>
-      .bigText {
-          font-size: 80px;
-          font-family: 'Work Sans', sans-serif;
-          color: white;
-          padding-bottom: 100px;
-          
-      }
+  <!-- my CSS-->
+  <link rel="stylesheet" type="text/css" href="assets/css/trainTime.css">
 
-      .special {
-        margin: 300px;
-      }
 
-      .lead {
-          color: white;
-      }
-
-      .jumbotron {
-          background-image: url("assets/images/trainStation.jpg");
-          background-position: center;
-          background-size: contain;
-          background-repeat:no-repeat;
-          background-color: black;
-          
-      }
-
-      td {
-          text-align:left;
-      }
-
-      .tableHeader {
-        font-family: 'Faster One', cursive;
-      }
-
-      body {
-        font-family: 'Work Sans', sans-serif;
-        font-size: 24px;
-      }
-
-      .formContainer {
-          width: 50%;
-          margin: auto;
-      }
-      
-      #submit-Train {
-        font-family: 'Work Sans', sans-serif;
-        font-size: 24px;
-      }
-  
-      
-
-  </style>
 
 </head>
 <body>
@@ -129,92 +81,6 @@
               
               
             </div>
-    <script>
-        // display ID's: 
-        // input ID's: #trainNameInput, #destinationInput, #trainTimeInput, #frequencyInput
-
-        var config = {
-            apiKey: "AIzaSyBTXjLEK2jIcYDuPGLYwMR3-lkOAj5Nuls",
-            authDomain: "train-time-fe0eb.firebaseapp.com",
-            databaseURL: "https://train-time-fe0eb.firebaseio.com",
-            projectId: "train-time-fe0eb",
-            storageBucket: "",
-            messagingSenderId: "219768034060"
-        };
-        firebase.initializeApp(config);
-
-        // for referencing the database
-        var database = firebase.database();
-
-
-        $("#submit-train").on("click", function(event) {
-            event.preventDefault();
-            var trainName = $("#trainNameInput").val().trim();
-            console.log("Train name: " + trainName);
-            var destination = $("#destinationInput").val().trim();
-            console.log("The destination is: " + destination);
-            var firstStopTime = $("#trainTimeInput").val().trim();
-            console.log("The first train arrives at: " + firstStopTime);
-            var frequency = $("#frequencyInput").val().trim();
-            console.log("It runs every " + frequency + " minutes.");
-
-            var newTrain = {
-                name: trainName,
-                destination: destination,
-                firstTime: firstStopTime,
-                frequency: frequency,
-                dateAdded: firebase.database.ServerValue.TIMESTAMP
-            };
-
-            database.ref().push(newTrain);
-
-            console.log(newTrain.name);
-            console.log(newTrain.destination);
-            console.log(newTrain.firstTime);
-            console.log(newTrain.frequency);
-
-            $("#trainNameInput").val("");
-            $("#destinationInput").val("");
-            $("#trainTimeInput").val("");
-            $("#frequencyInput").val("");
-        });
-
-        database.ref().on("child_added", function(childSnapshot) {
-            console.log(childSnapshot.val());
-
-            var trainName = childSnapshot.val().name;
-            var destination = childSnapshot.val().destination;
-            var firstStopTime = childSnapshot.val().firstTime;
-            var frequency = childSnapshot.val().frequency;
-
-            console.log(trainName);
-            console.log(destination);
-            console.log(firstStopTime);
-            console.log(frequency);
-
-            var firstTimeFormatted = moment(firstStopTime, "HH:mm").subtract(1, "years");
-            console.log(firstTimeFormatted);
-
-            var currentTime = moment();
-            console.log("the current time is: " + moment(currentTime).format("HH:mm"));
-
-            var diffTime = moment().diff(moment(firstTimeFormatted), "minutes");
-            console.log("The difference in time is: " + diffTime);
-
-            var tRemainder = diffTime % frequency;
-            console.log(tRemainder);
-
-            var minutesLeft = frequency - tRemainder;
-            console.log("Minutes left until the train is here: " + minutesLeft + "minutes");
-
-            var nextTrain = moment().add(minutesLeft, "minutes").format("h:mm A");
-            console.log("Arriving at: " + nextTrain);
-
-            $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td class='text-center'>" +
-            frequency + "</td><td class='text-center'>" + nextTrain + "</td><td class='text-center'>" + minutesLeft + "</td></tr>");
-        });
-    // use moment(nextscheduledtraintime).toNow()); to calculate time remaining until now
-    // firstStopTime + frequency = nextStopTime.  if nextStopTime has already passed, + frequency again.  else, Next Arrival and then calculate time left until now
-    </script>
+            <script src="assets/javascript/app.js"></script>
 </body>
 </html>

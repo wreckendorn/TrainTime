@@ -1,0 +1,55 @@
+/* jumbotron main text */
+.bigText {
+    font-size: 80px;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    padding-bottom: 100px;
+    
+}
+
+/* jumbotron container */
+.special {
+  margin: 300px;
+}
+
+/* smaller text in jumbrotron */
+.lead {
+    color: white;
+}
+
+.jumbotron {
+    background-image: url("../images/trainStation.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-color: black;
+    
+}
+
+.formContainer {
+    width: 50%;
+    margin: auto;
+}
+
+td {
+    text-align:left;
+}
+
+/* h1 for the train schedule */
+.tableHeader {
+  font-family: 'Faster One', cursive;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 24px;
+}
+
+/* submit button */
+#submit-Train {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 24px;
+}
+
+
+
